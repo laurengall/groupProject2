@@ -5,7 +5,7 @@ public class Faculty extends Employee {
   public final static String[] departments = {
       "Math", "Science", "English", "World Language", "Religion", "Fine Arts"
   };
-
+  private boolean departmentHead = false;
   static ArrayList<Faculty> MathTeachers = new ArrayList<Faculty>();
   static ArrayList<Faculty> SciTeachers = new ArrayList<Faculty>();
   static ArrayList<Faculty> EngTeachers = new ArrayList<Faculty>();
@@ -20,8 +20,8 @@ public class Faculty extends Employee {
 
   }
 
-  public Faculty(int id, String name, int salary, int yearsExp, String department) {
-    super(id, name, salary, yearsExp);
+  public Faculty(int id, String name, int yearsExp, String department, String degree, boolean depHead) {
+    super(id, name, yearsExp, "faculty", degree, depHead);
     addDepartment(department);
   }
 

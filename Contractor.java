@@ -5,7 +5,7 @@ public class Contractor extends Employee {
   private int workDays;
 
   public Contractor(int id, String name, int salary, int yearsExp, int wage, String company, int workDays) {
-    super(id, name, salary, yearsExp); 
+    super(id, name, yearsExp, "Contractor"); 
     this.wage = wage; 
     this.company = company; 
     this.workDays = workDays; 

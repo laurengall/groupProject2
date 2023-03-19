@@ -10,7 +10,7 @@ import java.util.ArrayList;
   static ArrayList<String> Coaches = new ArrayList<String>();
 
   public Staff(int id, String name, int salary, int yearsExp, String Department) {
-    super(id, name, salary, yearsExp);
+    super(id, name, yearsExp, "Staff");
   }
 
 
