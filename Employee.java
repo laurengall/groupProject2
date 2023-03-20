@@ -6,12 +6,14 @@ public class Employee {
   private String degree;
   private int salary;
   private int yearsExp;
+  public static int numberOfEmployees = 0;
   static ArrayList<Employee> faculty = new ArrayList<Employee>();
   static ArrayList<Employee> staff = new ArrayList<Employee>();
   static ArrayList<Employee> contractor = new ArrayList<Employee>();
 
   // constructors
   public Employee() {
+    this.numberOfEmployees++;
   }
 
   public Employee(int id, String name, int yearsExp, String job, String degree, Boolean departmentHead) {
@@ -21,12 +23,14 @@ public class Employee {
     addJob(job);
     this.salary = calculateSalary(job, degree, departmentHead, yearsExp);
     this.degree = degree;
+    this.numberOfEmployees++;
   }
 
   public Employee(int id, String name, int years, String job) {
     this.id = id;
     this.name = name;
     this.yearsExp = years;
+    this.numberOfEmployees++;
   }
 
   // methods
@@ -46,12 +50,14 @@ public class Employee {
     }
   }
   //idk i copied this code and I dont think it works as intended
-  public int removeFromJob(String jobName){
+  //do we need this? I don't want it
+  /*public int removeFromJob(String jobName){
     switch(jobName){
       case "math":
-        for(int i = 0; i < faculty.size(); i++){
-          faculty.remove(i);
-          return 0;
+        if(MathTeachers.get(i).getId() == empId){
+            MathTeachers.remove(i);
+            return 0;
+          }
         }
         break;
       case "science":
@@ -70,7 +76,7 @@ public class Employee {
         return -1;
     }
     return -1;
-  }
+  }*/
  static public void calculatePayroll() {
     int temp = 0;
     int tempTwo = 0;

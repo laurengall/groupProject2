@@ -9,6 +9,12 @@ public class Tools {
         String input = scanIn.nextLine();   
         return input.toLowerCase();
   }
+
+  public static int getInputInt(){
+    System.out.print("\r> ");
+    Scanner scanIn = new Scanner(System.in);
+    return scanIn.nextInt();
+  }
   
   public static void waitms(int ms){
     try{

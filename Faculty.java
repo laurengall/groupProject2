@@ -52,47 +52,59 @@ public class Faculty extends Employee {
     }
   }
 
-  public int removeFromDep(String depName){
+  public int removeFromDep(String depName, int empId){
     switch(depName){
       case "math":
         for(int i = 0; i < MathTeachers.size(); i++){
-          MathTeachers.remove(i);
-          return 0;
+          if(MathTeachers.get(i).getId() == empId){
+            MathTeachers.remove(i);
+            return 0;
+          }
         }
         System.out.println("Teacher is not in department: " + depName);
         break;
       case "science":
         for(int i = 0; i < SciTeachers.size(); i++){
-          SciTeachers.remove(i);
-          return 0;
+          if(SciTeachers.get(i).getId() == empId){
+            SciTeachers.remove(i);
+            return 0;
+          }
         }
         System.out.println("Teacher is not in department: " + depName);
         break;
       case "english":
         for(int i = 0; i < EngTeachers.size(); i++){
-          EngTeachers.remove(i);
-          return 0;
+          if(EngTeachers.get(i).getId() == empId){
+            EngTeachers.remove(i);
+            return 0;
+          }
         }
         System.out.println("Teacher is not in department: " + depName);
         break;
       case "world language":
         for(int i = 0; i < WorldLangTeachers.size(); i++){
-          WorldLangTeachers.remove(i);
-          return 0;
+          if(WorldLangTeachers.get(i).getId() == empId){
+            WorldLangTeachers.remove(i);
+            return 0;
+          }
         }
         System.out.println("Teacher is not in department: " + depName);
         break;
       case "religion":
         for(int i = 0; i < RelTeachers.size(); i++){
-          RelTeachers.remove(i);
-          return 0;
+          if(RelTeachers.get(i).getId() == empId){
+            RelTeachers.remove(i);
+            return 0;
+          }
         }
         System.out.println("Teacher is not in department: " + depName);
         break;
       case "fine arts":
         for(int i = 0; i < FATeachers.size(); i++){
-          FATeachers.remove(i);
-          return 0;
+          if(FATeachers.get(i).getId() == empId){
+            FATeachers.remove(i);
+            return 0;
+          }
         }
         System.out.println("Teacher is not in department: " + depName);
         break;
