@@ -9,8 +9,8 @@ import java.util.ArrayList;
   static ArrayList<Staff> Guides = new ArrayList<Staff>();
   static ArrayList<Staff> Coaches = new ArrayList<Staff>();
 
-  public Staff(int id, String name, int yearsExp, String Department) {
-    super(id, name, yearsExp, "Staff");
+  public Staff(String name, int yearsExp, String Department) {
+    super(name, yearsExp, "Staff");
     addDepartment(Department);
   }
 
@@ -18,15 +18,15 @@ import java.util.ArrayList;
    static public void printAllDep() {
       System.out.print("Administration: ");
       for (int i = 0; i < Admins.size(); i++) {
-        System.out.print(Admins.get(i).getName() + ", ");
+      System.out.print(Admins.get(i).getName() + "(" + Admins.get(i).getId() + "), ");
       }
       System.out.print("\nGuidance: ");
       for (int i = 0; i < Guides.size(); i++) {
-        System.out.print(Guides.get(i).getName() + ", "); 
+      System.out.print(Guides.get(i).getName() + "(" + Guides.get(i).getId() + "), ");
       }
     System.out.print("\nCoaches: ");
       for (int i = 0; i < Coaches.size(); i++) {
-        System.out.print(Coaches.get(i).getName() + ", ");
+      System.out.print(Coaches.get(i).getName() + "(" + Coaches.get(i).getId() + "), ");
       }
     System.out.println();
     }

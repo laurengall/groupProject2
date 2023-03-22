@@ -10,30 +10,53 @@ public class Employee {
   static ArrayList<Employee> faculty = new ArrayList<Employee>();
   static ArrayList<Employee> staff = new ArrayList<Employee>();
   static ArrayList<Employee> contractor = new ArrayList<Employee>();
+  static ArrayList<Employee> allEmployees = new ArrayList<Employee>();
+  static ArrayList<Integer> idList = new ArrayList<Integer>();
 
   // constructors
   public Employee() {
     this.numberOfEmployees++;
+    allEmployees.add(this);
   }
 
-  public Employee(int id, String name, int yearsExp, String job, String degree, Boolean departmentHead) {
-    this.id = id;
+  public Employee(String name, int yearsExp, String job, String degree, Boolean departmentHead) {
     this.name = name;
     this.yearsExp = yearsExp;
     addJob(job);
     this.salary = calculateSalary(job, degree, departmentHead, yearsExp);
     this.degree = degree;
     this.numberOfEmployees++;
+    generateId();
+    allEmployees.add(this);
+
   }
 
-  public Employee(int id, String name, int years, String job) {
-    this.id = id;
+  public Employee(String name, int years, String job) {
     this.name = name;
     this.yearsExp = years;
     this.numberOfEmployees++;
+    generateId();
+    allEmployees.add(this);
   }
 
-  // methods
+  public int generateId() {
+    boolean idAlreadyExist = false;
+    for (int i = 0; i < Integer.MAX_VALUE; i++) {
+      for (Integer j : idList) {
+        idAlreadyExist = false;
+        if (j == i) {
+          idAlreadyExist = true;
+        }
+      }
+      if (!idAlreadyExist) {
+        idList.add(i);
+        this.id = i;
+        return 1;
+      }
+    }
+    return -1;
+  }
+
   public void addJob(String jobName) {
     switch (jobName.toLowerCase()) {
       case "faculty":
@@ -49,75 +72,67 @@ public class Employee {
         break;
     }
   }
-  //idk i copied this code and I dont think it works as intended
-  //do we need this? I don't want it
-  /*public int removeFromJob(String jobName){
-    switch(jobName){
-      case "math":
-        if(MathTeachers.get(i).getId() == empId){
-            MathTeachers.remove(i);
-            return 0;
-          }
-        }
-        break;
-      case "science":
-        for(int i = 0; i < staff.size(); i++){
-          staff.remove(i);
-          return 0;
-        }
-        break;
-      case "contractor":
-        for(int i = 0; i < contractor.size(); i++){
-          contractor.remove(i);
-          return 0;
-        }
-        break;
-      default:
-        return -1;
+
+  static public void printIdName() {
+    for (Employee x : allEmployees) {
+      System.out.println(x.getName() + ": (" + x.getId() + ")");
     }
-    return -1;
-  }*/
- static public void calculatePayroll() {
+  }
+
+  static public void calculatePayroll() {
     int temp = 0;
     int tempTwo = 0;
-    for (Employee x: faculty) {
+    for (Employee x : faculty) {
       temp += x.getSalary();
-    } 
-    System.out.println("Faculty pay: " + temp + "$");
+    }
+    System.out.println("Faculty pay: $" + temp);
     tempTwo += temp;
     temp = 0;
-    for (Employee x: staff) {
+    for (Employee x : staff) {
       temp += x.getSalary();
-    } 
-    System.out.println("Staff pay: " + temp + "$");
+    }
+    System.out.println("Staff pay: $" + temp);
     tempTwo += temp;
     temp = 0;
-    for (Employee x: contractor) {
+    for (Employee x : contractor) {
       temp += x.getSalary();
-    } 
-    System.out.println("Contrator pay: " + temp + "$");
+    }
+    System.out.println("Contractor pay: $" + temp);
     tempTwo += temp;
-    System.out.println("Total pay: " + tempTwo + "$");
+    System.out.println("Total pay: $" + tempTwo);
   }
+
   public int calculateSalary(String job, String degree, Boolean departmentHead, int years) {
     int s = 0;
-    switch (job) {
+    switch (job.toLowerCase()) {
       case "staff":
         switch (degree) {
-          case "bachelor":
-            s = 60000 * (int) Math.pow(1.03, years);
+          case "ba":
+            s = (int)(60000 * Math.pow(1.03, years));
             if (s > 70000) {
               s = 70000;
             }
             break;
-          case "master":
-            s = 64000 * (int) Math.pow(1.03, years);
+            case "bs":
+            s = (int)(60000 * Math.pow(1.03, years));
+            if (s > 70000) {
+              s = 70000;
+            }
+            break;
+            case "ma":
+            s = (int)(64000 * Math.pow(1.03, years));
             if (s > 86000) {
               s = 86000;
             }
             break;
-          case "doctorate":
-            s = 70000 * (int) Math.pow(1.03, years);
+          case "ms":
+            s = (int)(64000 * Math.pow(1.03, years));
+            if (s > 86000) {
+              s = 86000;
+            }
+            break;
+          case "phd":
+            s = (int)(70000 * Math.pow(1.03, years));
             if (s > 110000) {
               s = 110000;
             }
@@ -126,20 +141,20 @@ public class Employee {
         break;
       case "faculty":
         switch (degree) {
-          case "bachelor":
-            s = 50000 * (int) Math.pow(1.03, years);
+          case "ba":
+            s = (int)(50000 * Math.pow(1.03, years));
             if (s > 60000) {
               s = 60000;
             }
             break;
-          case "master":
-            s = 53000 * (int) Math.pow(1.03, years);
+          case "ms":
+            s = (int)(53000 * Math.pow(1.03, years));
             if (s > 70000) {
               s = 70000;
             }
             break;
-          case "doctorate":
-            s = 58000 * (int) Math.pow(1.03, years);
+          case "phd":
+            s = (int)(58000 * Math.pow(1.03, years));
             if (s > 90000) {
               s = 90000;
             }
@@ -178,15 +193,15 @@ public class Employee {
     this.id = id;
   }
 
-  public void getName(String name) {
+  public void setName(String name) {
     this.name = name;
   }
 
-  public void getSalary(int salary) {
+  public void setSalary(int salary) {
     this.salary = salary;
   }
 
-  public void getYearsExp(int yearsExp) {
+  public void setYearsExp(int yearsExp) {
     this.yearsExp = yearsExp;
   }
 }
