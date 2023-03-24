@@ -3,15 +3,15 @@ class Main {
     boolean playing = true;
     while (playing) {
       System.out.println("--------------------------------------------------\n");
-      System.out.println("Test admin console");
-      System.out.println("1 - Add new employee");
-      System.out.println("2 - edit current employee");
-      System.out.println("3 - remove employee");
-      System.out.println("4 - employee lister");
-      System.out.println("5 - payroll computer");
-      System.out.println("6 - help");
-      System.out.println("7 - restart");
-      System.out.println("8 - quit");
+      System.out.println("Test Admin Console");
+      System.out.println("1 - Add New Employee");
+      System.out.println("2 - Edit Current Employee");
+      System.out.println("3 - Remove Employee");
+      System.out.println("4 - Employee Lister");
+      System.out.println("5 - Payroll Computer");
+      System.out.println("6 - Help");
+      System.out.println("7 - Restart");
+      System.out.println("8 - Quit");
       // Get user inputs
       String input = Tools.getInput().toLowerCase();
       Tools.clear();
@@ -22,9 +22,15 @@ class Main {
           break;
         case "2":
           Employee.printIdName();
+          System.out.println("Type the Id of the employee you want to edit");
+          int id = Tools.getInputInt();
+          Employee.employeeId.get(id).editEmployee();
           break;
         case "3":
-          System.out.println("to be implemented\n");
+          Employee.printIdName();
+          System.out.println("Type the Id of the employee you want to remove");
+          System.out.println("It dont worky sorry");
+          Tools.waitms(1000);
           break;
         case "4":
           System.out.println("Total Number of Employees: " + Employee.numberOfEmployees);
@@ -55,7 +61,7 @@ class Main {
           playing = false;
           break;
         default:
-          System.out.println("That is not a valid command");
+          System.out.println("That is not a valid command, try again.");
           break;
       }
     }
@@ -107,9 +113,11 @@ class Main {
         String emplComp = Tools.getInput();
         System.out.println("Work Days:");
         int emplWD = Tools.getInputInt();
+        System.out.println("Wage:");
+        int wage = Tools.getInputInt();
 
         // create contractor object
-        Contractor newContractor = new Contractor(emplName, emplYE, emplComp, emplWD);
+        Contractor newContractor = new Contractor(emplName, emplYE, emplComp, emplWD, wage);
      
         break;
 

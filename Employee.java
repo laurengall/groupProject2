@@ -1,15 +1,17 @@
 import java.util.ArrayList;
-
+import java.util.*;
 public class Employee {
   private int id;
   private String name;
   private String degree;
   private int salary;
   private int yearsExp;
+  private String job;
   public static int numberOfEmployees = 0;
   static ArrayList<Employee> faculty = new ArrayList<Employee>();
   static ArrayList<Employee> staff = new ArrayList<Employee>();
   static ArrayList<Employee> contractor = new ArrayList<Employee>();
+  static HashMap<Integer,Employee> employeeId = new HashMap<Integer,Employee>();
   static ArrayList<Employee> allEmployees = new ArrayList<Employee>();
   static ArrayList<Integer> idList = new ArrayList<Integer>();
 
@@ -23,22 +25,23 @@ public class Employee {
     this.name = name;
     this.yearsExp = yearsExp;
     addJob(job);
-    this.salary = calculateSalary(job, degree, departmentHead, yearsExp);
+    this.job = job;
     this.degree = degree;
+    this.salary = calculateSalary(departmentHead);
     this.numberOfEmployees++;
     generateId();
     allEmployees.add(this);
-
+    employeeId.put(this.id, this);
   }
 
   public Employee(String name, int years, String job) {
     this.name = name;
     this.yearsExp = years;
+    addJob(job);
     this.numberOfEmployees++;
     generateId();
     allEmployees.add(this);
   }
-
   public int generateId() {
     boolean idAlreadyExist = false;
     for (int i = 0; i < Integer.MAX_VALUE; i++) {
@@ -72,7 +75,10 @@ public class Employee {
         break;
     }
   }
-
+ //dont delete needed for overidden
+  public void editEmployee() {
+    
+  }
   static public void printIdName() {
     for (Employee x : allEmployees) {
       System.out.println(x.getName() + ": (" + x.getId() + ")");
@@ -102,16 +108,13 @@ public class Employee {
     System.out.println("Total pay: $" + tempTwo);
   }
 
-  public int calculateSalary(String job, String degree, Boolean departmentHead, int years) {
+  public int calculateSalary(boolean departmentHead) {
     int s = 0;
-    
+    String job = this.job;
+    String degree = this.degree;
+    int years = this.yearsExp;
     switch (job.toLowerCase()) {
-      case "contractor":    
-        s = (int)(40000 * Math.pow(1.01, years));
-            if (s > 40000) {
-              s = 40000;
-            }
-        break;
+    
       case "staff":
         switch (degree) {
           case "ba":
@@ -208,11 +211,19 @@ public class Employee {
     return salary;
    
   }
-
+  public String getJob() {
+    return job;
+  }
   public int getYearsExp() {
     return yearsExp;
   }
-
+  public String getDegree() {
+    return degree;
+  }
+  public void setDegree(String degree) {
+    this.degree = degree;
+  }
+  
   public void setId(int id) {
     this.id = id;
   }

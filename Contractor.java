@@ -1,19 +1,19 @@
 import java.util.ArrayList; 
 public class Contractor extends Employee {
- 
   private String company;
   private int workDays;
-
-  public Contractor(String name, int yearsExp,  String company, int workDays) {
+  private int wage; 
+  public Contractor(String name, int yearsExp,  String company, int workDays, int wage) {
     super(name, yearsExp, "contractor"); 
     this.company = company; 
     this.workDays = workDays; 
+    this.wage = wage; 
+    super.setSalary((int)(calculateSalary()));
     addContractors(company); 
   }
 static ArrayList<Contractor> security = new ArrayList<Contractor>();
 static ArrayList<Contractor> cleanImg = new ArrayList<Contractor>();
 static ArrayList<Contractor> contractors = new ArrayList<Contractor>();
-  
   
   public String getCompany(){
     return company;
@@ -21,15 +21,24 @@ static ArrayList<Contractor> contractors = new ArrayList<Contractor>();
   public int getWorkDays(){
     return workDays; 
   }
-
-
+public int getWage(){
+  return wage; 
+}
   public void setComp(String company){
     this.company = company; 
   }
   public void setWorkDays(int workDays){
     this.workDays = workDays;
   }
-
+  public void setWage(int wage){
+    this.wage = wage; 
+  }
+public double calculateSalary(){
+  double a = wage * workDays; 
+  double b = a * 8; 
+  double sal = b * 52; 
+  return sal; 
+}
   public void addContractors(String company){
     switch(company.toLowerCase()){
       case "security":
@@ -63,8 +72,7 @@ static ArrayList<Contractor> contractors = new ArrayList<Contractor>();
         break;
     }
     return -1;
-  }
-    
+  }    
 public static void printAllContractors() {
     System.out.print("Security Personnel: "); 
       for (Contractor nm : security) {
@@ -77,5 +85,4 @@ public static void printAllContractors() {
       }
       System.out.println("");
     }
-
-    }
+}

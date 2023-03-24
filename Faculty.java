@@ -26,7 +26,49 @@ public class Faculty extends Employee {
   }
 
   // methods
-
+  //edit method
+  public void editEmployee(){
+    boolean cont = true;
+    while (cont) {
+      System.out.println("--------------------------------------------------\n");
+      System.out.println("Editing: " + super.getName());
+      System.out.println("1 - Change Name");
+      System.out.println("2 - Change Degree");
+      System.out.println("3 - Change Years working");
+      System.out.println("4 - Add Classes");
+      System.out.println("5 - Back to main");
+      int input = Tools.getInputInt();
+      Tools.clear();
+    
+      switch (input) {
+        case 1:
+          System.out.println("Current Name: " + super.getName());
+          System.out.println("New Name:");
+          super.setName(Tools.getInput());
+          break;
+        case 2:
+          System.out.println("Current Degree: " + super.getDegree());
+          System.out.println("New Degree:");
+          super.setDegree(Tools.getInput());
+          super.calculateSalary(departmentHead);
+          break;
+        case 3:
+          System.out.println("Current Experience: " + super.getYearsExp());
+          System.out.println("New Experience:");
+          super.setYearsExp(Tools.getInputInt());
+          super.calculateSalary(departmentHead);
+          break;
+        case 4:
+          break;
+        case 5:
+          cont = false;
+          break;
+        default:
+          System.out.println("Not a valid command");
+          break;
+      }
+    }
+  }
   // add to dept
   public void addDepartment(String depName) {
     switch (depName.toLowerCase()) {

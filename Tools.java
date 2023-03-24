@@ -1,26 +1,26 @@
 import java.util.Scanner;
 
 public class Tools {
-	
+
   public static String getInput() {
-    	
-        System.out.print("\r> ");
-        Scanner scanIn = new Scanner(System.in);
-        String input = scanIn.nextLine();   
-        return input.toLowerCase();
+
+    System.out.print("\r> ");
+    Scanner scanIn = new Scanner(System.in);
+    String input = scanIn.nextLine();
+    return input.toLowerCase();
   }
 
-  public static int getInputInt(){
+  public static int getInputInt() {
     System.out.print("\r> ");
     Scanner scanIn = new Scanner(System.in);
     return scanIn.nextInt();
   }
-  
-  public static void waitms(int ms){
-    try{
+
+  public static void waitms(int ms) {
+    try {
       Thread.sleep(ms);
-    } catch(InterruptedException ex) {
-    Thread.currentThread().interrupt();
+    } catch (InterruptedException ex) {
+      Thread.currentThread().interrupt();
     }
   }
 
@@ -29,4 +29,3 @@ public class Tools {
     System.out.flush();
   }
 }
-
