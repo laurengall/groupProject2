@@ -102,27 +102,29 @@ class Main {
 
       case "2":
         // gather rest of contractor data
-        System.out.println("Wage: ");
-        int emplWage = Tools.getInputInt();
+        
         System.out.println("Company:");
         String emplComp = Tools.getInput();
         System.out.println("Work Days:");
         int emplWD = Tools.getInputInt();
 
         // create contractor object
-        Contractor newContractor = new Contractor(emplName, emplYE, emplWage, emplComp, emplWD);
+        Contractor newContractor = new Contractor(emplName, emplYE, emplComp, emplWD);
+     
         break;
 
       case "3":
-        // gather rest of staff input
+        // gather rest of staff input       
         System.out.println("Department:");
         emplDep = Tools.getInput();
 
         // create staff object
         Staff newStaff = new Staff(emplName, emplYE, emplDep);
+        break; 
+        
       default:
         runSuccess = false;
-        System.out.println("valid inputs are 1,2, or 3");
+        System.out.println("Valid inputs are 1, 2, or 3.");
         break;
     }
 

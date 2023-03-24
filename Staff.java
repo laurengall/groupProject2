@@ -5,28 +5,28 @@ import java.util.ArrayList;
     "Admin", "Guidance", "Coaches"
   };
 
-  static ArrayList<Staff> Admins = new ArrayList<Staff>();
-  static ArrayList<Staff> Guides = new ArrayList<Staff>();
-  static ArrayList<Staff> Coaches = new ArrayList<Staff>();
+  static ArrayList<Staff> admins = new ArrayList<Staff>();
+  static ArrayList<Staff> guides = new ArrayList<Staff>();
+  static ArrayList<Staff> coaches = new ArrayList<Staff>();
 
-  public Staff(String name, int yearsExp, String Department) {
-    super(name, yearsExp, "Staff");
-    addDepartment(Department);
+  public Staff(String name, int yearsExp, String department) {
+    super(name, yearsExp, "staff");
+    addDepartment(department);
   }
 
 
    static public void printAllDep() {
       System.out.print("Administration: ");
-      for (int i = 0; i < Admins.size(); i++) {
-      System.out.print(Admins.get(i).getName() + "(" + Admins.get(i).getId() + "), ");
+      for (Employee nm: admins) {
+      System.out.print(nm.getName() + "(" + nm.getId() + "), ");
       }
       System.out.print("\nGuidance: ");
-      for (int i = 0; i < Guides.size(); i++) {
-      System.out.print(Guides.get(i).getName() + "(" + Guides.get(i).getId() + "), ");
+      for (Employee nm: guides) {
+      System.out.print(nm.getName() + "(" + nm.getId() + "), ");
       }
     System.out.print("\nCoaches: ");
-      for (int i = 0; i < Coaches.size(); i++) {
-      System.out.print(Coaches.get(i).getName() + "(" + Coaches.get(i).getId() + "), ");
+      for (Employee nm: coaches) {
+      System.out.print(nm.getName() + "(" + nm.getId() + "), ");
       }
     System.out.println();
     }
@@ -36,13 +36,13 @@ import java.util.ArrayList;
    public void addDepartment(String depName) {
     switch (depName.toLowerCase()) {
       case "administration":
-        Admins.add(this);
+        admins.add(this);
         break;
       case "guidance":
-        Guides.add(this);
+        guides.add(this);
         break;
       case "coaches":
-        Coaches.add(this);
+        coaches.add(this);
         break;
       default:
         break;
@@ -52,27 +52,27 @@ import java.util.ArrayList;
   public int removeFromDep(String depName, int empId){
     switch(depName){
       case "admin":
-        for(int i = 0; i < Admins.size(); i++){
-          if(Admins.get(i).getId() == empId){
-            Admins.remove(i);
+        for(int i = 0; i < admins.size(); i++){
+          if(admins.get(i).getId() == empId){
+            admins.remove(i);
             return 0;
           }
         }
         System.out.println("Staff is not in department: " + depName);
         break;
       case "guidance":
-        for(int i = 0; i < Guides.size(); i++){
-          if(Guides.get(i).getId() == empId){
-            Guides.remove(i);
+        for(int i = 0; i < guides.size(); i++){
+          if(guides.get(i).getId() == empId){
+            guides.remove(i);
             return 0;
           }
         }
         System.out.println("Staff is not in department: " + depName);
         break;
       case "coaches":
-        for(int i = 0; i < Coaches.size(); i++){
-          if(Coaches.get(i).getId() == empId){
-            Coaches.remove(i);
+        for(int i = 0; i < coaches.size(); i++){
+          if(coaches.get(i).getId() == empId){
+            coaches.remove(i);
             return 0;
           }
         }

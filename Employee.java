@@ -104,7 +104,14 @@ public class Employee {
 
   public int calculateSalary(String job, String degree, Boolean departmentHead, int years) {
     int s = 0;
+    
     switch (job.toLowerCase()) {
+      case "contractor":    
+        s = (int)(40000 * Math.pow(1.01, years));
+            if (s > 40000) {
+              s = 40000;
+            }
+        break;
       case "staff":
         switch (degree) {
           case "ba":
@@ -137,6 +144,10 @@ public class Employee {
               s = 110000;
             }
             break;
+            
+        }
+        if (departmentHead == true) {
+         s += 2500;
         }
         break;
       case "faculty":
@@ -147,8 +158,21 @@ public class Employee {
               s = 60000;
             }
             break;
+            case "bs":
+            s = (int)(60000 * Math.pow(1.03, years));
+            if (s > 70000) {
+              s = 70000;
+            }
+            
+            break;
+            case "ma":
+            s = (int)(64000 * Math.pow(1.03, years));
+            if (s > 86000) {
+              s = 86000;
+            }
+            break;
           case "ms":
-            s = (int)(53000 * Math.pow(1.03, years));
+            s = (int)(000 * Math.pow(1.03, years));
             if (s > 70000) {
               s = 70000;
             }
@@ -158,14 +182,13 @@ public class Employee {
             if (s > 90000) {
               s = 90000;
             }
-            break;
+            break;             
         }
-        if (departmentHead) {
-          s += 2500;
+        if (departmentHead == true) {
+         s += 2500;
         }
         break;
-      case "contractor":
-        break;
+      
       default:
         break;
     }
@@ -183,6 +206,7 @@ public class Employee {
 
   public int getSalary() {
     return salary;
+   
   }
 
   public int getYearsExp() {

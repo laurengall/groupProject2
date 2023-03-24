@@ -1,12 +1,11 @@
 import java.util.ArrayList; 
 public class Contractor extends Employee {
-  private int wage;
+ 
   private String company;
   private int workDays;
 
-  public Contractor(String name, int yearsExp, int wage, String company, int workDays) {
-    super(name, yearsExp, "Contractor"); 
-    this.wage = wage; 
+  public Contractor(String name, int yearsExp,  String company, int workDays) {
+    super(name, yearsExp, "contractor"); 
     this.company = company; 
     this.workDays = workDays; 
     addContractors(company); 
@@ -14,9 +13,8 @@ public class Contractor extends Employee {
 static ArrayList<Contractor> security = new ArrayList<Contractor>();
 static ArrayList<Contractor> cleanImg = new ArrayList<Contractor>();
 static ArrayList<Contractor> contractors = new ArrayList<Contractor>();
-  public int getWage(){
-    return wage; 
-  }
+  
+  
   public String getCompany(){
     return company;
   }
@@ -24,9 +22,7 @@ static ArrayList<Contractor> contractors = new ArrayList<Contractor>();
     return workDays; 
   }
 
-  public void setWage(int wage){
-    this.wage = wage; 
-  }
+
   public void setComp(String company){
     this.company = company; 
   }
@@ -68,18 +64,7 @@ static ArrayList<Contractor> contractors = new ArrayList<Contractor>();
     }
     return -1;
   }
-    public static void calculateContractorPay(int wage, int workDays){
-      double weekly = wage * workDays; 
-      double monthly = weekly * 4; 
-      double yearly = monthly * 12; 
-      System.out.println("Based on current wage:\nWeekly Pay: $" + weekly + "\nMonthly Pay: $" + monthly + "\nYearly Pay: $" + yearly); 
-    }
-  public int getYearlyPay(int wage, int workDays){
-       int weekly = wage * workDays; 
-       int monthly = weekly * 4; 
-       int yearly = monthly * 12; 
-      return yearly; 
-    }
+    
 public static void printAllContractors() {
     System.out.print("Security Personnel: "); 
       for (Contractor nm : security) {
@@ -93,11 +78,4 @@ public static void printAllContractors() {
       System.out.println("");
     }
 
-
-  public int getSalary(){
-    int wD = this.getWorkDays();
-    int wa = this.getWage(); 
-    int yP = getYearlyPay(wa, wD); 
-    return yP;  
-  }
     }
