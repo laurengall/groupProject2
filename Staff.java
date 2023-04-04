@@ -1,6 +1,7 @@
 import java.util.ArrayList;
  class Staff extends Employee{
-
+private int workDays; 
+   private int wage; 
   public static final String[] staffDepartments = {
     "Admin", "Guidance", "Coaches"
   };
@@ -9,11 +10,19 @@ import java.util.ArrayList;
   static ArrayList<Staff> guides = new ArrayList<Staff>();
   static ArrayList<Staff> coaches = new ArrayList<Staff>();
 
-  public Staff(String name, int yearsExp, String department) {
+  public Staff(String name, int yearsExp, String department, int workDays, int wage) {
     super(name, yearsExp, "staff");
+    this.workDays = workDays; 
+    this.wage = wage; 
+    super.setSalary((int)(calculateSalary()));
     addDepartment(department);
   }
-
+public double calculateSalary(){
+  double a = wage * workDays; 
+  double b = a * 8; 
+  double sal = b * 52; 
+  return sal; 
+}
 
    static public void printAllDep() {
       System.out.print("Administration: ");

@@ -60,6 +60,19 @@ public class Employee {
     return -1;
   }
 
+  public static void removeEmployeeById(int id) {
+    for (Iterator<Employee> iterator = allEmployees.iterator(); iterator.hasNext();) {
+        Employee emp = iterator.next();
+        if (emp.getId() == id) {
+            iterator.remove();
+            System.out.println(emp.getName() + " with ID " + id + " has been removed.");
+            return;
+        }
+    }
+    System.out.println("No employee with ID " + id + " found.");
+}
+
+  
   public void addJob(String jobName) {
     switch (jobName.toLowerCase()) {
       case "faculty":
@@ -114,8 +127,7 @@ public class Employee {
     String degree = this.degree;
     int years = this.yearsExp;
     switch (job.toLowerCase()) {
-    
-      case "staff":
+     /* case "staff":
         switch (degree) {
           case "ba":
             s = (int)(60000 * Math.pow(1.03, years));
@@ -148,11 +160,11 @@ public class Employee {
             }
             break;
             
-        }
+        } 
         if (departmentHead == true) {
          s += 2500;
-        }
-        break;
+        } 
+        break;*/
       case "faculty":
         switch (degree) {
           case "ba":

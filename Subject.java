@@ -1,24 +1,23 @@
-/*import java.util.ArrayList;
+import java.util.ArrayList;
 
 public class Subject {
 
-  private int numOfStudents;
+  public String name;
   private double gpa;
   private boolean isAP;
   private boolean isHonors;
   private boolean isRegular;
-  private String nameTeacher;
+  private Faculty teacher;
 
-ArrayList<Student> students = new ArrayList<Student>();
+  static ArrayList<Subject> classes = new ArrayList<Subject>();
+  ArrayList<Student> students = new ArrayList<Student>();
 
-public Subject(int numOfStudents, boolean isAP, boolean isHonors, boolean isRegular, String nameTeacher, ArrayList<Student> students){
-
-  this.numOfStudents = numOfStudents;
+public Subject(String name, boolean isAP, boolean isHonors, boolean isRegular){
+  this.name = name;
   this.isAP = isAP;
   this.isHonors = isHonors;
   this.isRegular = isRegular;
-  this.nameTeacher = nameTeacher;
-  this.students = students;
+  classes.add(this);
 }
 
   public Subject(){
@@ -41,20 +40,11 @@ public double averageClassGPA(ArrayList<Student> s){
     System.out.println(s);
   }
 }   
-  
 
-
-
-
-
-  
 public int getNumOfStudents() {
-	return numOfStudents;
+	return students.size();
 }
 
-public void setNumOfStudents(int numOfStudents) {
-	this.numOfStudents = numOfStudents;
-}
 
 public double getGpa() {
 	return gpa;
@@ -87,21 +77,20 @@ public void setRegular(boolean isRegular) {
 	this.isRegular = isRegular;
 }
 
-public String getNameTeacher() {
-	return nameTeacher;
+public Faculty getTeacher() {
+	return teacher;
 }
 
-public void setNameTeacher(String nameTeacher) {
-	this.nameTeacher = nameTeacher;
+public void setTeacher(Faculty teacher) {
+	this.teacher = teacher;
 }
 
-public ArrayList<Student> getStudents() {
-	return students;
+public static void addToClass(Subject su, Student s) {
+	su.students.add(s);
 }
 
-public void setStudents(ArrayList<Student> students) {
-	this.students = students;
+public void addToClass(Student s){
+  students.add(s);
 }
   
 }
-*/
